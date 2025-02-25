@@ -1,0 +1,53 @@
+<div *ngIf="surahData" class="mx-auto max-w-7xl px-6 py-8" dir="rtl">
+  <div
+    class="p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 text-center"
+  >
+    <a href="/" class="text-gray-900 dark:text-white underline m-4"
+      >Back to list of surah</a
+    >
+    <h5
+      class="m-3 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+    >
+      {{ surahData.englishName }} ({{ surahData.name }})
+    </h5>
+    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+      Number : {{ surahData.number }}
+    </p>
+    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+      Number Of Ayahs: {{ surahData.numberOfAyahs }}
+    </p>
+    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+      Revelation : {{ surahData.revelationType }}
+    </p>
+    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+      Translation : {{ surahData.englishNameTranslation }}
+    </p>
+    <a
+      href="surah/{{ surahData.number }}/translation"
+      class="text-gray-900 dark:text-white underline m-4"
+      >Translation In English</a
+    >
+    <audio controls autoplay>
+      <source src="https://cdn.islamic.network/quran/audio-surah/128/ar.abdullahalmatrood/{{surahData.number}}.mp3" type="audio/mp3" />
+      Your browser does not support the audio element.
+    </audio>
+  </div>
+  <ol class="relative border-s border-gray-200 dark:border-gray-700 my-6">
+    <li class="ms-6 my-1" *ngFor="let ayah of surahData.ayahs">
+      <span
+        class="absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900"
+      >
+        {{ ayah.numberInSurah }}
+      </span>
+      <div
+        class="items-end p-4 bg-white border border-gray-200 rounded-lg shadow-xs sm:flex dark:bg-gray-800 dark:border-gray-800 dark:hover:bg-gray-600 hover:bg-gray-200"
+      >
+        <div
+          class="text-3xl text-gray-700 w-full dark:text-gray-300 font-medium"
+        >
+          {{ ayah.text }}
+        </div>
+      </div>
+    </li>
+  </ol>
+</div>
